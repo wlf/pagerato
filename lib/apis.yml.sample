@@ -1,0 +1,24 @@
+production:
+  gums:
+    api_secret: ''
+    api_endpoint: 'http://api.gums.wooga.com/v1'
+    api_update_secret: ''
+    key: mops.alert
+  google:
+    glgkey: ''
+    sheet: 'Sheet1'
+    username: ''
+    password: ''
+  librato:
+    url: 'https://metrics-api.librato.com/v1'
+    username: 'tim.lossen@wooga.net'
+    password: ''
+    secret: ''
+  pagerduty:
+    service_key:
+      'P0QV1J0': ''
+    url: 'https://events.pagerduty.com/generic/2010-04-15/create_event.json'
+  service:
+    urls:
+      - 'https://mops-alerts-staging.herokuapp.com/'
+      - 'https://mops-alerts.herokuapp.com/'

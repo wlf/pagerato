@@ -1,0 +1,22 @@
+{
+  "name": "librato_alerts",
+  "version": "0.0.1",
+  "author": "Robert Wolf <robert.wolf@wooga.net>",
+  "engines": {
+    "node": "0.8.x",
+    "npm":  "1.1.x"
+  },
+  "dependencies": {
+    "coffee-script": "1.3.x",
+    "express": "3.x",
+    "restler": "2.x.x",
+    "js-yaml": "1.0.x",
+    "clone": "0.1.x",
+    "jake": "0.3.x"
+  },
+  "devDependencies": {
+    "vows": "*",
+    "assert": "*",
+    "nodemock": "*"
+  }
+}
