@@ -71,6 +71,12 @@ module.exports = class AlertHandler
         config: config
         libratoUrl:  "https://metrics.librato.com/metrics/#{metric}"
 
+    # trigger unknown sources immediately
+    if config.alert == 'default'
+      @pagerduty.triggerIncident service_key, incident, "Received unknown alert", clone(@alerts[incident])
+      delete @alerts[incident]
+      return
+
     # function to check alert value against the current mesurement values from librato
     alertHandler = (firstStart) =>
       timestamp = Math.floor Date.now()/1000
@@ -127,9 +133,13 @@ module.exports = class AlertHandler
   
   findAlerts: (metric, source, alerts=@config.librato['alerts']) ->
 
+    found = false
+    defaultAlert = {}
     for config in alerts
+      defaultAlert = config if config.alert == 'default'
       continue if config.alert != metric
-      
+
+      found = true
       if config.blacklist and source
         blacklisted = config.blacklist.split(',').some (value) ->
           new RegExp(value.trim(), "gi").test source;
@@ -143,6 +153,10 @@ module.exports = class AlertHandler
       if !config.lower_limit and !config.upper_limit and !config.warn_time
         console.log "missing limits"
         continue
+
       return config
 
-    return false
+    if found
+      return false
+    else
+      return defaultAlert
