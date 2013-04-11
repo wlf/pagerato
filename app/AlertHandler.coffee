@@ -73,7 +73,7 @@ module.exports = class AlertHandler
 
     # trigger unknown sources immediately
     if config.alert == 'default'
-      @pagerduty.triggerIncident service_key, incident, "Received unknown alert", clone(@alerts[incident])
+      @pagerduty.triggerIncident service_key, incident, metric, clone(@alerts[incident])
       delete @alerts[incident]
       return
 
