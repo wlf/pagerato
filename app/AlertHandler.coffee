@@ -72,7 +72,7 @@ module.exports = class AlertHandler
         libratoUrl:  "https://metrics.librato.com/metrics/#{metric}"
 
     # trigger unknown sources immediately
-    if config.metric == 'default'
+    if config.alert == 'default'
       @pagerduty.triggerIncident service_key, incident, "Received unknown alert", clone(@alerts[incident])
       delete @alerts[incident]
       return
