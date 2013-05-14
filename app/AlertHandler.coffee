@@ -105,7 +105,7 @@ module.exports = class AlertHandler
         # Calculating the exceeded timelimit and current time in model using the linear regression model
           warn_time_value = (result.last.measure_time+config.warn_time)*result.slope+result.intercept
           if (!Statistic.inRange config.lower_limit, warn_time_value,  config.upper_limit)        
-            description = "[#{metric} - #{source}] - limit will be exceeded within warn time: #{config.lower_limit} < #{warn_time_value } < #{config.upper_limit}"
+            description = "[#{metric} - #{source}] - limit will be exceeded within warn time: #{config.lower_limit} < #{warn_time_value} estd. < #{config.upper_limit}"
             alertTriggered = true
             @alerts[incident].triggerType = 'prediction'
 
